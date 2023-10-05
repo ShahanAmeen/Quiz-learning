@@ -61,7 +61,26 @@ questions.removeAttribute("class", "hide")
 
 }
 //display the question function with the question title
- 
+function displayQuestion(){
+  //establish what question we are on
+  var currentQuestion = codequestions[questionIndex]
+  questionTitle.textContent = currentQuestion.title
+  
+  //go to currentQuestions choices array to indicate the process of the for loop
+  // i symbolizes current array choice we are iterating over
+    for(i = 0; i < currentQuestion.choices.length; i++) {
+    var choiceBtn = document.createElement("button")
+    choiceBtn.textContent = currentQuestion.choices[i]
+  
+  
+  
+    choices.append(choiceBtn)
+  }
+   }
+  
+   function checkanswer(){
+    
+   }
 //Display the answer choices
 var choices = document.getElementById("choices");
 choices.innerHTML = "";
