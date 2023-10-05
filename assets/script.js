@@ -45,9 +45,11 @@ function startQuiz() {
   displayQuestions(currentQuestionIndex);
 
 }
-
+//display the question function with the question title
 function displayQuestion(index){
   if(index < quizQuestion.length) {
-    var questionTitle = document.getElementById("question")
+    var questionTitle = document.getElementById("question");
+    questionTitle.textContent = codequestions[index].question;
   }
 }
+
