@@ -39,92 +39,15 @@ var codequestions = [
 
 // Function to start the quiz
 
-function beginQuiz() {
-  // Start the timer
-  timerInterval = setInterval(function () {
-    // Update the timer on the page
-    document.getElementById("time").textContent = timeRemaining;
+function startQuiz() {
+  startTimer();
+  hideStartScreen();
+  displayQuestions(currentQuestionIndex);
 
-    if (timeRemaining <= 0) {
-      // End the quiz if the timer reaches 0
-      endQuiz();
-    } else {
-      // Continue decrementing the timer
-      timeRemaining--;
-    }
-  }, 1000);
-
-  // Display the first question
-  displayQuestion(currentQuestionIndex);
 }
 
-// Function to display a question and choices
-function displayQuestion(index) {
-  var questionElement = document.getElementById("question-title");
-  var choicesElement = document.getElementById("choices");
-
-  // Check if there are questions left
-  if (index < questions.length) {
-    var question = questions[index];
-    questionElement.textContent = question.question;
-
-    // Clear previous choices
-    choicesElement.innerHTML = "";
-
-    // Create choice buttons
-    for (var i = 0; i < question.choices.length; i++) {
-      var choiceButton = document.createElement("button");
-      choiceButton.textContent = question.choices[i];
-      choiceButton.addEventListener("click", function () {
-        checkAnswer(this.textContent);
-      });
-      choicesElement.appendChild(choiceButton);
-    }
-  } else {
-    // End the quiz if there are no more questions
-    endQuiz();
+function displayQuestion(index){
+  if(index < quizQuestion.length) {
+    var questionTitle = document.getElementById("question")
   }
 }
-
-// Function to check if an answer is correct
-function checkAnswer(answer) {
-  var question = questions[currentQuestionIndex];
-
-  if (answer === question.correctAnswer) {
-    // Update score for correct answer
-    score++;
-  } else {
-    // Subtract time for incorrect answer
-    timeRemaining -= 10;
-  }
-
-  // Move to the next question
-  currentQuestionIndex++;
-  displayQuestion(currentQuestionIndex);
-}
-
-// Function to end the quiz
-function endQuiz() {
-  clearInterval(timerInterval);
-
-  // Hide quiz questions and show the end screen
-  document.getElementById("questions").classList.add("hide");
-  document.getElementById("end-screen").classList.remove("hide");
-
-  // Display the final score
-  document.getElementById("final-score").textContent = score;
-}
-
-// Function to save high scores
-function saveHighScore() {
-  var initials = document.getElementById("initials").value;
-  // Implement logic to save high scores here
-}
-
-// Event listener for start button
-document.getElementById("startBtn").addEventListener("click", startQuiz);
-
-// Event listener for submit button
-document.getElementById("submit").addEventListener("click", saveHighScore);
-
-
