@@ -12,7 +12,7 @@ var submit = document.getElementById("submit")
 var secondsLeft=60;
 var questionIndex=0;
 var score = 0;
-
+var intervalState;
 var codequestions = [
     {
       title: "Commonly used data types DO NOT include:",
@@ -41,15 +41,44 @@ var codequestions = [
 
 function startQuiz() {
   startTimer();
-  hideStartScreen();
-  displayQuestions(currentQuestionIndex);
+ hideStartScreen();
+displayQuestion();
+
+}
+function startTimer(){
+intervalState = setInterval(function (){
+secondsLeft=secondsLeft-1
+time.textContent=secondsLeft
+if(secondsLeft<=0){
+  clearInterval(intervalState) //clearInterval = stop clock running
+}
+  },1000);//1000 = milliseconds = 1 second
+}
+
+function hideStartScreen(){
+  startScreen.setAttribute("class", "hide")
+questions.removeAttribute("class", "hide")
 
 }
 //display the question function with the question title
-function displayQuestion(index){
-  if(index < quizQuestion.length) {
-    var questionTitle = document.getElementById("question");
-    questionTitle.textContent = codequestions[index].question;
-  }
-}
+ 
+//Display the answer choices
+var choices = document.getElementById("choices");
+choices.innerHTML = "";
+
+//codequestions[index].choices
+
+startBtn.onclick=startQuiz
+
+
+// //function with parameters (inputs/placeholders for potential values )
+// function add (a, b, c, d){
+//   var total = a + b + c +d
+//   return total
+// }
+// // arguments give true values to expected inputs
+// add (2, 4, 2, 7)//15
+
+
+
 
