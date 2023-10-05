@@ -24,6 +24,21 @@ var codequestions = [
       choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
       answer: "parentheses"
     },
+    {
+      title: "What symbol connects us to our id in our HTML?",
+      choices: ["#", "$", "*", "!"],
+      answer: "#"
+    },
+    {
+      title: "_____ is allowed to reassign the value of a variable.",
+      choices: ["if", "let", "const", "function"],
+      answer: "const"
+    },
+    {
+      title: "_____is syntax within a programming language that is designed to make things easier to read or to express.",
+      choices: ["Python", "bootstrap", "jQuerey", "syntactic sugar"],
+      answer: "systactic sugar"
+    },
 ]
 
 //1. start quiz function that starts timer, hides start screen
@@ -61,29 +76,47 @@ questions.removeAttribute("class", "hide")
 
 }
 //display the question function with the question title
-function displayQuestion(){
+function displayQuestion(){ 
   //establish what question we are on
   var currentQuestion = codequestions[questionIndex]
-  questionTitle.textContent = currentQuestion.title
-  
+  questionTitle.textContent = currentQuestion.title//updates title
+  choices.innerHTML = "" //clears out previous choices before new answer choices are appended
   //go to currentQuestions choices array to indicate the process of the for loop
   // i symbolizes current array choice we are iterating over
     for(i = 0; i < currentQuestion.choices.length; i++) {
     var choiceBtn = document.createElement("button")
     choiceBtn.textContent = currentQuestion.choices[i]
-  
-  
+    choiceBtn.setAttribute("value", currentQuestion.choices[i])
+  choiceBtn.onclick=checkanswer
   
     choices.append(choiceBtn)
   }
    }
   
    function checkanswer(){
-    
+  if (this.value===codequestions[questionIndex].answer){
+    console.log("correct")
+
+  }else{
+    console.log("incorrect")
+  }
+  questionIndex++
+///if we hit end of questions, run endquiz function, else keep running displayquestion()
+  if(questionIndex === codequestions.length){
+    console.log("quiz is over")
+    endQuiz()
+  } else {
+  displayQuestion()
+  }
    }
-//Display the answer choices
-var choices = document.getElementById("choices");
-choices.innerHTML = "";
+
+//stop timer if time left, hide questions, unhide end screen
+   function endQuiz(){
+      clearInterval(intervalState)
+      questions.setAttribute("class", "hide")
+      endScreen.removeAttribute("class", "hide")
+   }
+
 
 //codequestions[index].choices
 
