@@ -115,7 +115,9 @@ function displayQuestion(){
       clearInterval(intervalState)
       questions.setAttribute("class", "hide")
       endScreen.removeAttribute("class", "hide")
-   }
+
+
+  }
 
 
 //codequestions[index].choices
@@ -131,6 +133,5 @@ startBtn.onclick=startQuiz
 // // arguments give true values to expected inputs
 // add (2, 4, 2, 7)//15
 
-
-
+// rerun session!!
 
