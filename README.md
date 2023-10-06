@@ -4,7 +4,8 @@
 
 
 ## IMG
-C:\Users\15072\Documents\bootcamp\homework\Quiz\assets\Quiz.png
+<img width="829" alt="Quiz" src="https://github.com/ShahanAmeen/Quiz-learning/assets/144054784/384ac59a-27e9-4778-9e71-a8fa2a243cef">
+
 ## URL
 
 ## Author
