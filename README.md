@@ -6,8 +6,7 @@ This quiz demonstrates the process of using the comination of different concepts
 ## IMG
 
 ## URL
-https://shahanameen.github.io/Quiz-learning/
-https://github.com/ShahanAmeen/Quiz-learning/
+
 ## Author
 Shahan Ameen
 https://github.com/ShahanAmeen 
